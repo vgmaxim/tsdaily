@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   View,
   TextInput,
@@ -12,6 +12,9 @@ import {
 import Icon from 'react-native-vector-icons/Feather';
 
 const Login = () => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
   return (
     <ScrollView style={styles.screen}>
       <View style={styles.container}>
@@ -28,6 +31,8 @@ const Login = () => {
             autoCorrect={false}
             autoCapitalize="none"
             style={{flex: 1}}
+            value={username}
+            onChangeText={character => setUsername(character)}
           />
         </View>
         <View style={styles.inputField}>
@@ -38,6 +43,8 @@ const Login = () => {
             autoCapitalize="none"
             secureTextEntry
             style={{flex: 1}}
+            value={password}
+            onChangeText={character => setPassword(character)}
           />
         </View>
         <View style={{justifyContent: 'center', alignItems: 'center'}}>
@@ -45,6 +52,8 @@ const Login = () => {
             style={styles.btnLogin}
             onPress={() => {
               console.log('Button pressed!');
+              console.log('You have entered: ');
+              console.log(username + ' ' + password);
             }}>
             <Text>Login</Text>
           </TouchableOpacity>
