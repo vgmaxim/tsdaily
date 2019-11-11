@@ -10,10 +10,27 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
+import colors from '../constants/colors';
+import fontSize from '../constants/fontSizes';
 
-const Login = () => {
+const LoginScreen = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+
+  const handleLoginBtnPressed = () => {
+    if (validateEmail(username)) {
+      console.log('Button pressed!');
+      console.log('You have entered: ');
+      console.log(username + ' ' + password);
+    } else {
+      console.log('Invalid e-mail!');
+    }
+  };
+
+  const validateEmail = email => {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+  };
 
   return (
     <ScrollView style={styles.screen}>
@@ -50,12 +67,8 @@ const Login = () => {
         <View style={{justifyContent: 'center', alignItems: 'center'}}>
           <TouchableOpacity
             style={styles.btnLogin}
-            onPress={() => {
-              console.log('Button pressed!');
-              console.log('You have entered: ');
-              console.log(username + ' ' + password);
-            }}>
-            <Text>Login</Text>
+            onPress={handleLoginBtnPressed}>
+            <Text style={styles.loginBtnText}>Login</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.forgotPassword}>
@@ -67,7 +80,7 @@ const Login = () => {
 };
 
 const styles = StyleSheet.create({
-  screen: {backgroundColor: 'lavender', flex: 1},
+  screen: {backgroundColor: colors.backgroundPrimary, flex: 1},
   container: {marginTop: 60, marginHorizontal: 60},
   logo: {justifyContent: 'center', alignItems: 'center'},
   inputField: {
@@ -83,7 +96,7 @@ const styles = StyleSheet.create({
     margin: 5,
   },
   btnLogin: {
-    backgroundColor: 'dodgerblue',
+    backgroundColor: colors.btnPrimary,
     justifyContent: 'center',
     alignItems: 'center',
     borderColor: 'black',
@@ -100,6 +113,7 @@ const styles = StyleSheet.create({
     marginTop: 40,
     alignItems: 'center',
   },
+  loginBtnText: {fontSize: fontSize.btnFontSize},
 });
 
-export default Login;
+export default LoginScreen;
