@@ -8,6 +8,7 @@ import {
   Image,
   ScrollView,
   TouchableOpacity,
+  Alert,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import colors from '../constants/colors';
@@ -23,7 +24,19 @@ const LoginScreen = () => {
       console.log('You have entered: ');
       console.log(username + ' ' + password);
     } else {
-      console.log('Invalid e-mail!');
+      Alert.alert(
+        'Eroare autentificare',
+        'Adresa de e-mail nu respecta formatul standard. (<username>@totalsoft.ro)',
+        [
+          {
+            text: 'Anulare',
+            onPress: () => console.log('Cancel Pressed'),
+            style: 'cancel',
+          },
+          {text: 'OK', onPress: () => console.log('OK Pressed')},
+        ],
+        {cancelable: true},
+      );
     }
   };
 
@@ -44,7 +57,7 @@ const LoginScreen = () => {
         <View style={styles.inputField}>
           <Icon name="mail" size={20} />
           <TextInput
-            placeholder="Email"
+            placeholder="Utilizator"
             autoCorrect={false}
             autoCapitalize="none"
             style={{flex: 1}}
@@ -55,7 +68,7 @@ const LoginScreen = () => {
         <View style={styles.inputField}>
           <Icon name="key" size={20} />
           <TextInput
-            placeholder="Password"
+            placeholder="Parola"
             autoCorrect={false}
             autoCapitalize="none"
             secureTextEntry
@@ -68,7 +81,7 @@ const LoginScreen = () => {
           <TouchableOpacity
             style={styles.btnLogin}
             onPress={handleLoginBtnPressed}>
-            <Text style={styles.loginBtnText}>Login</Text>
+            <Text style={styles.loginBtnText}>Log in</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.forgotPassword}>
