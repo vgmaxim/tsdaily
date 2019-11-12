@@ -49,7 +49,11 @@ const LoginScreen = () => {
     <ScrollView style={styles.screen} showsVerticalScrollIndicator={false}>
       <Image
         source={require('../img/strip.png')}
-        style={{width: '100%', height: 10}}
+        style={
+          {
+            /*height: 10*/
+          }
+        }
       />
       <View style={styles.container}>
         <View style={styles.logo}>
