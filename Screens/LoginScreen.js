@@ -54,8 +54,8 @@ const LoginScreen = () => {
       <View style={styles.container}>
         <View style={styles.logo}>
           <Image
-            source={require('../img/Untitled.png')}
-            style={{width: 150, height: 150}}
+            source={require('../img/LogoTSDaily.png')}
+            style={{width: 180, height: 180}}
           />
         </View>
         <View style={styles.inputField}>
