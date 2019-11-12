@@ -46,7 +46,11 @@ const LoginScreen = () => {
   };
 
   return (
-    <ScrollView style={styles.screen}>
+    <ScrollView style={styles.screen} showsVerticalScrollIndicator={false}>
+      <Image
+        source={require('../img/strip.png')}
+        style={{width: '100%', height: 10}}
+      />
       <View style={styles.container}>
         <View style={styles.logo}>
           <Image
@@ -88,12 +92,18 @@ const LoginScreen = () => {
           <Text>Ai uitat parola?</Text>
         </View>
       </View>
+      <View style={styles.bottom}></View>
     </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
-  screen: {backgroundColor: colors.backgroundPrimary, flex: 1},
+  screen: {
+    backgroundColor: colors.backgroundPrimary,
+    flex: 1,
+    borderColor: 'black',
+    borderWidth: 1,
+  },
   container: {marginTop: 60, marginHorizontal: 60},
   logo: {justifyContent: 'center', alignItems: 'center'},
   inputField: {
@@ -127,6 +137,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   loginBtnText: {fontSize: fontSize.btnFontSize},
+  bottom: {
+    flex: 1,
+    /*flex: 1, justifyContent: 'flex-end', marginTop: 90*/
+  },
 });
 
 export default LoginScreen;
